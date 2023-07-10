@@ -1,0 +1,53 @@
+Create a app where you have an input box and whenever a user types something in the input box and hits submit it should be added on the webpage below the input box
+
+index.html
+------------
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>My App</h1>
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button id="submitButton">Submit</button>
+    <ul id="textList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+styles.css
+-------------
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+script.js
+----------
+const textInput = document.getElementById('textInput');
+const submitButton = document.getElementById('submitButton');
+const textList = document.getElementById('textList');
+
+submitButton.addEventListener('click', function() {
+  const enteredText = textInput.value.trim();
+
+  if (enteredText !== '') {
+    const listItem = document.createElement('li');
+    listItem.textContent = enteredText;
+    textList.appendChild(listItem);
+    textInput.value = '';
+  }
+});
